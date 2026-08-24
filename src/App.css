@@ -1319,3 +1319,135 @@ button {
     gap: 18px;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    color: #111827;
+  }
+
+  .app {
+    color: #111827;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  span,
+  label {
+    color: inherit;
+  }
+
+  input,
+  select,
+  textarea {
+    color: #111827;
+    background: #ffffff;
+  }
+
+  input::placeholder {
+    color: #6b7280;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    color: #111827;
+  }
+}
+
+/* =========================
+   Mobile Text & Dark Mode Fix
+========================= */
+
+@media (max-width: 768px) {
+  /* Light mode */
+  .app:not(.dark) {
+    color: #111827;
+  }
+
+  .app:not(.dark) h1,
+  .app:not(.dark) h2,
+  .app:not(.dark) h3 {
+    color: #111827;
+  }
+
+  .app:not(.dark) .section-header h2,
+  .app:not(.dark) .monthly-summary-header h2,
+  .app:not(.dark) .chart-card h2 {
+    color: #111827;
+  }
+
+  .app:not(.dark) .transaction-info h3 {
+    color: #111827;
+  }
+
+  .app:not(.dark) .monthly-stats span,
+  .app:not(.dark) .transaction-info p,
+  .app:not(.dark) .summary-card p {
+    color: #4b5563;
+  }
+
+  /* Inputs */
+  .app:not(.dark) input,
+  .app:not(.dark) select,
+  .app:not(.dark) textarea {
+    color: #111827;
+    background: #ffffff;
+  }
+
+  .app:not(.dark) input::placeholder {
+    color: #6b7280;
+    opacity: 1;
+  }
+
+  /* Dark mode */
+  .app.dark {
+    color: #f9fafb;
+  }
+
+  .app.dark h1,
+  .app.dark h2,
+  .app.dark h3 {
+    color: #f9fafb;
+  }
+
+  .app.dark .section-header h2,
+  .app.dark .monthly-summary-header h2,
+  .app.dark .chart-card h2 {
+    color: #f9fafb;
+  }
+
+  .app.dark .transaction-info h3 {
+    color: #f9fafb;
+  }
+
+  .app.dark .monthly-stats span,
+  .app.dark .transaction-info p,
+  .app.dark .summary-card p {
+    color: #d1d5db;
+  }
+
+  /* Inputs */
+  .app.dark input,
+  .app.dark select,
+  .app.dark textarea {
+    color: #f9fafb;
+    background: #111827;
+    border-color: #374151;
+  }
+
+  .app.dark input::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+  }
+
+  /* Buttons */
+  .app.dark .month-button,
+  .app.dark .accordion-button,
+  .app.dark .close-button,
+  .app.dark .cancel-button {
+    color: #f9fafb;
+  }
+}
