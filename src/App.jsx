@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+
 import TransactionForm from "./components/TransactionForm";
 import ExpenseChart from "./components/ExpenseChart";
 import Header from "./components/Header";
@@ -12,6 +13,8 @@ import MonthlySummary from "./components/MonthlySummary";
 
 function App() {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
+
+  // Dark mode
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("darkMode") === "true";
   });
@@ -26,35 +29,44 @@ function App() {
     });
   };
 
+  // Transactions
   const [transactions, setTransactions] = useState(() => {
     const savedTransactions = localStorage.getItem("transactions");
 
     return savedTransactions ? JSON.parse(savedTransactions) : [];
   });
-  
+
+  // Save transactions
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
 
+  // UI states
   const [showForm, setShowForm] = useState(false);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const [categoryFilter, setCategoryFilter] = useState("all");
 
+  // Delete
   const [deleteTransactionId, setDeleteTransactionId] = useState(null);
 
+  // Toast
   const [toast, setToast] = useState(null);
 
+  // Calculate income
   const income = transactions
     .filter((transaction) => transaction.type === "income")
-    .reduce((total, transaction) => total + transaction.amount, 0);
+    .reduce((total, transaction) => total + Number(transaction.amount), 0);
 
+  // Calculate expenses
   const expenses = transactions
     .filter((transaction) => transaction.type === "expense")
-    .reduce((total, transaction) => total + transaction.amount, 0);
+    .reduce((total, transaction) => total + Number(transaction.amount), 0);
 
+  // Balance
   const balance = income - expenses;
 
+  // Filter transactions
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesSearch = transaction.title
       .toLowerCase()
@@ -68,6 +80,7 @@ function App() {
     return matchesSearch && matchesType && matchesCategory;
   });
 
+  // Add transaction
   const addTransaction = (transaction) => {
     if (!transaction) {
       setShowForm(false);
@@ -91,9 +104,12 @@ function App() {
     }, 3000);
   };
 
+  // Start delete
   const deleteTransaction = (id) => {
     setDeleteTransactionId(id);
   };
+
+  // Confirm delete
   const confirmDelete = () => {
     const transactionToDelete = transactions.find(
       (transaction) => transaction.id === deleteTransactionId,
@@ -117,29 +133,44 @@ function App() {
     }, 3000);
   };
 
+  // Transaction being deleted
   const transactionToDelete = transactions.find(
     (transaction) => transaction.id === deleteTransactionId,
   );
+
   return (
     <div className={`app ${darkMode ? "dark" : ""}`}>
+      {/* Header */}
       <Header darkMode={darkMode} onToggleDarkMode={toggleDarkMode} />
 
       <main className="container">
+        {/* Balance */}
         <BalanceCard balance={balance} />
 
+        {/* Income / Expense cards */}
         <SummaryCards income={income} expenses={expenses} />
 
+        {/* Monthly summary */}
         <MonthlySummary
           transactions={transactions}
           selectedMonth={selectedMonth}
           onMonthChange={setSelectedMonth}
         />
 
+        {/* Transactions */}
         <section className="transactions">
           <div className="section-header">
             <h2>Recent Transactions</h2>
-            <button onClick={() => setShowForm(!showForm)}>+ Add</button>{" "}
+
+            <button
+              className="primary-button"
+              onClick={() => setShowForm(true)}
+            >
+              + Add
+            </button>
           </div>
+
+          {/* Add transaction modal */}
           {showForm && (
             <div className="modal-overlay" onClick={() => setShowForm(false)}>
               <div
@@ -147,23 +178,30 @@ function App() {
                 onClick={(event) => event.stopPropagation()}
               >
                 <div className="modal-header">
-                  <div>
+                  <div className="modal-title">
                     <span className="modal-icon">➕</span>
-                    <h2>Add Transaction</h2>
+
+                    <div>
+                      <h2>Add Transaction</h2>
+                      <p>Add your income or expense</p>
+                    </div>
                   </div>
 
                   <button
-                    className="primary-button"
-                    onClick={() => setShowForm(true)}
+                    className="close-button"
+                    onClick={() => setShowForm(false)}
+                    aria-label="Close"
                   >
-                    + Add Transaction
+                    ✕
                   </button>
                 </div>
 
                 <TransactionForm onAddTransaction={addTransaction} />
               </div>
             </div>
-          )}{" "}
+          )}
+
+          {/* Filters */}
           <div className="filters">
             <input
               type="text"
@@ -196,17 +234,21 @@ function App() {
               <option value="Other">📦 Other</option>
             </select>
           </div>
+
+          {/* Transaction list */}
           <TransactionList
             transactions={filteredTransactions}
             onDelete={deleteTransaction}
           />
         </section>
 
+        {/* Expense chart */}
         <ExpenseChart
           transactions={transactions}
           selectedMonth={selectedMonth}
         />
 
+        {/* Delete modal */}
         <DeleteModal
           transaction={transactionToDelete}
           onCancel={() => setDeleteTransactionId(null)}
@@ -214,6 +256,7 @@ function App() {
         />
       </main>
 
+      {/* Toast */}
       <Toast toast={toast} />
     </div>
   );

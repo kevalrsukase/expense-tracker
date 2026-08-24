@@ -52,6 +52,142 @@ button {
   padding: 0 20px;
 }
 
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 20px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 68px;
+  height: 68px;
+
+  object-fit: contain;
+  flex-shrink: 0;
+
+  border-radius: 14px;
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-text h1 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+
+  color: #111827;
+}
+
+.brand-text p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: #6b7280;
+}
+
+/* =========================
+   DARK MODE HEADER
+========================= */
+
+.app.dark .brand-text h1 {
+  color: #f9fafb;
+}
+
+.app.dark .brand-text p {
+  color: #9ca3af;
+}
+
+/* =========================
+   THEME TOGGLE
+========================= */
+
+.theme-button {
+  min-width: 130px;
+  height: 44px;
+
+  padding: 0 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  background: #f9fafb;
+  color: #111827;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.theme-button:hover {
+  transform: translateY(-2px);
+  background: #f3f4f6;
+}
+
+.theme-button:active {
+  transform: scale(0.97);
+}
+
+.theme-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.theme-label {
+  white-space: nowrap;
+}
+
+/* =========================
+   DARK MODE TOGGLE
+========================= */
+
+.app.dark .theme-button {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.app.dark .theme-button:hover {
+  background: #374151;
+}
+
 /* Balance card  */
 .balance-card {
   background: linear-gradient(135deg, #111827, #374151);
@@ -1113,6 +1249,72 @@ button {
   transform: scale(0.95);
 }
 
+/* =========================
+   MONTHLY SUMMARY - DARK MODE
+========================= */
+
+.app.dark .monthly-summary {
+  background: #111827;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.app.dark .monthly-summary p {
+  color: #9ca3af;
+}
+
+.app.dark .monthly-summary h2 {
+  color: #f9fafb;
+}
+
+.app.dark .monthly-summary-header {
+  color: #f9fafb;
+}
+
+.app.dark .monthly-stats > div {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.app.dark .monthly-stats span {
+  color: #9ca3af;
+}
+
+.app.dark .monthly-stats strong {
+  color: #f9fafb;
+}
+
+/* Month navigation buttons */
+
+.app.dark .month-button {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.app.dark .month-button:hover {
+  background: #374151;
+}
+
+/* Today button */
+
+.app.dark .current-month-button {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+.app.dark .current-month-button:hover {
+  background: #374151;
+}
+
+/* Calendar icon */
+
+.app.dark .monthly-icon {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
 /* Accordion  */
 .accordion-header {
   cursor: pointer;
@@ -1449,5 +1651,274 @@ button {
   .app.dark .close-button,
   .app.dark .cancel-button {
     color: #f9fafb;
+  }
+}
+
+/* =========================
+   HEADER / BRAND
+========================= */
+
+.header {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 20px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 68px;
+  height: 68px;
+
+  object-fit: contain;
+
+  flex-shrink: 0;
+
+  border-radius: 14px;
+
+  display: block;
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-text h1 {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  color: #111827;
+}
+
+.brand-text p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: #6b7280;
+}
+
+/* =========================
+   DARK MODE HEADER
+========================= */
+
+.app.dark .brand-text h1 {
+  color: #f9fafb;
+}
+
+.app.dark .brand-text p {
+  color: #9ca3af;
+}
+
+/* =========================
+   THEME BUTTON
+========================= */
+
+.theme-button {
+  width: 44px;
+  height: 44px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #f3f4f6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.theme-button:hover {
+  transform: translateY(-2px);
+  background: #e5e7eb;
+}
+
+.theme-button:active {
+  transform: scale(0.95);
+}
+
+/* Dark mode theme button */
+
+.app.dark .theme-button {
+  background: #1f2937;
+}
+
+.app.dark .theme-button:hover {
+  background: #374151;
+}
+
+/* =========================
+   MOBILE HEADER
+========================= */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 10px;
+  }
+
+  .brand-text h1 {
+    font-size: 19px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
+
+    margin-top: 3px;
+  }
+
+  .theme-button {
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+
+    border-radius: 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .header {
+    padding: 14px 12px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand-text h1 {
+    font-size: 17px;
+  }
+
+  .brand-text p {
+    font-size: 10px;
+  }
+
+  .theme-button {
+    width: 38px;
+    height: 38px;
+
+    font-size: 17px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .header {
+    padding: 16px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+  }
+
+  .brand-text h1 {
+    font-size: 19px;
+  }
+
+  .brand-text p {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .theme-button {
+    min-width: auto;
+
+    height: 40px;
+    padding: 0 11px;
+
+    gap: 6px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+  }
+
+  .theme-icon {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 400px) {
+  .header {
+    padding: 14px 12px;
+  }
+
+  .brand-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .brand-text h1 {
+    font-size: 17px;
+  }
+
+  .brand-text p {
+    font-size: 10px;
+  }
+
+  .theme-button {
+    padding: 0 9px;
+  }
+
+  .theme-label {
+    font-size: 11px;
   }
 }
