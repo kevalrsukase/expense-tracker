@@ -29,38 +29,9 @@ function App() {
   const [transactions, setTransactions] = useState(() => {
     const savedTransactions = localStorage.getItem("transactions");
 
-    if (savedTransactions) {
-      return JSON.parse(savedTransactions);
-    }
-
-    return [
-      {
-        id: 1,
-        title: "Food",
-        amount: 450,
-        type: "expense",
-        category: "Food",
-        date: "2026-07-20",
-      },
-      {
-        id: 2,
-        title: "Transport",
-        amount: 200,
-        type: "expense",
-        category: "Transport",
-        date: "2026-08-20",
-      },
-      {
-        id: 3,
-        title: "Salary",
-        amount: 50000,
-        type: "income",
-        category: "Salary",
-        date: "2026-08-20",
-      },
-    ];
+    return savedTransactions ? JSON.parse(savedTransactions) : [];
   });
-
+  
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions));
   }, [transactions]);
