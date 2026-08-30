@@ -10,7 +10,6 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
   const selectedMonthNumber = selectedMonth.getMonth();
   const selectedYear = selectedMonth.getFullYear();
 
-  // Get transactions for selected month
   const monthlyTransactions = transactions.filter((transaction) => {
     const transactionDate = new Date(transaction.date + "T00:00:00");
 
@@ -20,25 +19,21 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
     );
   });
 
-  // Calculate income
   const income = monthlyTransactions
     .filter((transaction) => transaction.type === "income")
     .reduce((total, transaction) => total + Number(transaction.amount), 0);
 
-  // Calculate expenses
   const expenses = monthlyTransactions
     .filter((transaction) => transaction.type === "expense")
     .reduce((total, transaction) => total + Number(transaction.amount), 0);
 
   const saved = income - expenses;
 
-  // Format selected month
   const monthName = selectedMonth.toLocaleDateString("en-IN", {
     month: "long",
     year: "numeric",
   });
 
-  // Previous month
   const goToPreviousMonth = () => {
     const newDate = new Date(
       selectedMonth.getFullYear(),
@@ -49,7 +44,6 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
     onMonthChange(newDate);
   };
 
-  // Next month
   const goToNextMonth = () => {
     if (isCurrentMonth) {
       return;
@@ -64,14 +58,12 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
     onMonthChange(newDate);
   };
 
-  // Go to current month
   const goToCurrentMonth = () => {
     onMonthChange(new Date());
   };
 
   return (
     <section className="monthly-summary">
-      {/* Accordion Header */}
       <div
         className="monthly-summary-header accordion-header"
         onClick={() => setIsOpen(!isOpen)}
@@ -96,7 +88,6 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
         </button>
       </div>
 
-      {/* Accordion Content */}
       {isOpen && (
         <div className="monthly-content">
           <div className="month-selector">
@@ -124,16 +115,12 @@ function MonthlySummary({ transactions, selectedMonth, onMonthChange }) {
           <div className="monthly-stats">
             <div>
               <span>Income</span>
-              <strong className="income-text">
-                ₹{income.toLocaleString("en-IN")}
-              </strong>
+              <strong className="income-text">₹{income.toLocaleString("en-IN")}</strong>
             </div>
 
             <div>
               <span>Expenses</span>
-              <strong className="expense-text">
-                ₹{expenses.toLocaleString("en-IN")}
-              </strong>
+              <strong className="expense-text">₹{expenses.toLocaleString("en-IN")}</strong>
             </div>
 
             <div>

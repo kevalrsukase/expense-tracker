@@ -1,0 +1,139 @@
+.monthly-summary {
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.monthly-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  cursor: pointer;
+}
+
+.accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.monthly-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(79, 70, 229, 0.08);
+  font-size: 1.3rem;
+}
+
+.monthly-summary-header p {
+  margin: 0 0 4px;
+  color: #6b7280;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.monthly-summary-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.accordion-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #111827;
+  font-size: 1.2rem;
+}
+
+.accordion-button.open {
+  transform: rotate(180deg);
+}
+
+.monthly-content {
+  padding: 0 20px 20px;
+}
+
+.month-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.month-selector h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.month-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.08);
+  color: #111827;
+  font-size: 1.2rem;
+}
+
+.month-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.current-month-button {
+  margin-bottom: 16px;
+  background: transparent;
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+.monthly-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.monthly-stats div {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.monthly-stats span {
+  color: #6b7280;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.monthly-stats strong {
+  font-size: 1.2rem;
+}
+
+.income-text {
+  color: #16a34a;
+}
+
+.expense-text {
+  color: #dc2626;
+}
+
+@media (max-width: 600px) {
+  .monthly-stats {
+    grid-template-columns: 1fr;
+  }
+}

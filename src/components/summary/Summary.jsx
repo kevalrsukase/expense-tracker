@@ -5,7 +5,7 @@ function Summary() {
       <p>Income: $0.00</p>
       <p>Expenses: $0.00</p>
     </section>
-  )
+  );
 }
 
-export default Summary
+export default Summary;
